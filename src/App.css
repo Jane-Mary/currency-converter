@@ -1,0 +1,136 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+section.section1 {
+  background-image: url(../public/div.sc-2b1c5c79-0.png);
+  background-size: cover;
+  width: 90rem;
+  height: 20rem;
+  margin: auto;
+}
+
+section.section1 .text {
+  color: white;
+  font-size: xx-large;
+  padding-top: 1rem;
+}
+
+section.section1 .text p {
+  font-size: large;
+  margin-top: -2rem;
+}
+
+.container {
+  font-size: large;
+  position: relative;
+  background: white;
+  width: 60rem;
+  margin-left: 25rem;
+  margin-top: -7rem;
+  margin-bottom: 5rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+  box-shadow: 2px 1px;
+}
+
+.container .navbar nav {
+  height: 4rem;
+  background-color: transparent;
+  align-items: center;
+  margin-left: 4rem;
+}
+
+.container .navbar nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  width: 80%;
+  cursor: pointer;
+}
+
+.container .navbar nav ul li {
+  margin-left: 30px;
+}
+
+.container .content .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .content .box label {
+  display: block;
+}
+
+.container .content .box input{
+    width: 10rem;
+    height: 2rem;
+}
+
+.container .content .box select{
+    width: 20rem;
+    height: 2rem;
+}
+
+.container .content .small-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .content .small-container p{
+    background-color: rgb(232, 246, 250);
+    text-align: left;
+    padding: 1rem;
+    font-size: medium;
+    margin-left: 2rem;
+    width: 95rem;
+}
+
+.container .content .small-container button{
+    background-color:rgba(71, 46, 114, 1);
+    color: white;
+    padding: .9rem;
+    border-radius: 8px;
+    margin-left: 10rem;
+    margin-right: 1rem;
+    width: 10rem;
+}
+
+section.section2 {
+  background-color: whitesmoke;
+  padding-top: 2rem;
+  width: 90rem;
+  margin: auto;
+}
+
+section.section2 .boxes h3 {
+  color: rgba(10, 20, 110, 1);
+  text-align: center;
+}
+
+section.section2 .boxes .images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6rem;
+}
+
+section.section2 .boxes .images img {
+  width: 18rem;
+  margin-right: 4rem;
+}
+
+section.section2 .last .images {
+  padding: 3rem 0;
+  margin-left: 10rem;
+}
+
+section.section2 .last .images img {
+  margin-right: 10rem;
+}
