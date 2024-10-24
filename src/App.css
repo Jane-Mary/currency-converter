@@ -3,7 +3,6 @@
   padding: 2rem;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgb(180, 178, 178);
 }
 
 section.section1 {
@@ -27,9 +26,9 @@ section.section1 .text p {
 
 .container {
   font-size: large;
-  position: relative;
+  position:relative;
   width: 60rem;
-  margin-left: 35rem;
+  margin-left: 45rem;
   margin-top: -7rem;
   margin-bottom: 3rem;
   padding: 1rem;
@@ -58,40 +57,63 @@ section.section1 .text p {
   margin-right: 2rem;
 }
 
+.container .content .box .switch span{
+  border: 2px solid black;
+  border-radius: 5rem;
+  margin:2rem 2rem 0 0 ;
+  cursor: pointer;
+} 
+
 .container .content .box select {
   width: 20rem;
   height: 2rem;
   margin-right: 2rem;
 }
 
+.content .display{
+  margin-left: -30rem;
+  font-size:larger;
+}
+
+.content .display p{
+  color: rgba(10, 20, 110, 1);
+  text-align: start;
+  margin-left: 30rem;
+}
+
 .container .content .small-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
+  margin-bottom: -2rem;
+  margin-left: -1rem;
 }
 
 .container .content .small-container p {
   background-color: rgb(232, 246, 250);
   text-align: left;
   padding: 1rem;
-  font-size: medium;
-  margin-left: 2rem;
-  width: 95rem;
+  font-size: small;
+  width: 35rem;
+  display: flex;
 }
 
+.container .content .small-container p span{
+  margin: .5rem;
+}
 .container .content .small-container button {
   background-color: rgba(71, 46, 114, 1);
   color: white;
   cursor: pointer;
   padding: 0.9rem;
   border-radius: 8px;
-  margin-left: 10rem;
-  margin-right: 1rem;
+  margin-left: 13rem;
   width: 10rem;
 }
 
 section.section2 {
-  background-color: rgb(134, 131, 131);
+  background-color: rgb(224, 223, 223);
   padding-top: 2rem;
   width: 90rem;
   margin: auto;

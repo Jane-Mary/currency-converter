@@ -62,12 +62,12 @@ export function App() {
         <div className="navbar">
           <nav>
             <ul>
-              <Box sx={{width: "60rem", backgroundColor: "white",padding: "1rem", marginTop: "-4rem", marginLeft: "-2rem", borderRadius: "10px"}}>
+              <Box sx={{width: "65rem", backgroundColor: "white",padding: "1rem", marginTop: "-4rem", marginLeft: "-28rem", borderRadius: "10px",border:"solid 2px black"}}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                   <Tabs value={value}  onChange={handleChange}  aria-label="basic tabs example"  >
-                    <Tab label="Convert" {...a11yProps(0)} sx={{ marginRight: "10rem", marginLeft: "2rem" }}/>
+                    <Tab label="Convert" {...a11yProps(0)}  sx={{ marginRight: "10rem", marginLeft: "2rem" }}/>
                     <Tab label="Send"  {...a11yProps(1)} sx={{ marginRight: "12rem" }} />
-                    <Tab  label="Graphics"   {...a11yProps(2)}   sx={{ marginRight: "10rem" }} />
+                    <Tab label="Graphics"   {...a11yProps(2)}   sx={{ marginRight: "10rem" }} />
                     <Tab label="Alert" {...a11yProps(3)} />
                   </Tabs>
                 </Box>
@@ -89,6 +89,9 @@ export function App() {
                           <option value="NIG">NIG - Nigeria</option>
                         </select>
                       </div>
+                      <div className="switch">
+                      <span className="material-icons">swap_horiz</span>
+                      </div>
                       <div className="form">
                         <label htmlFor="amount" style={{ marginLeft: "-7rem" }}>Towards </label>
                         <select name="towards" id="towards">
@@ -104,19 +107,17 @@ export function App() {
 
                     {/* Exchange rates display */}
                     <div className="display">
-                    <p>{inputValue}United States Dollar = 0.93Euro</p>
-                    <p>1EUR = 1,06527 USD</p>
+                    <p style={{color:"black"}}>{inputValue}United States Dollar =  <br></br> <span style={{fontSize:"xx-large",color:"#472E72"}}>0.93847853Euro</span> </p>
+                    <p style={{color:"black"}}>1EUR = 1,06527 USD</p>
 
                     </div>
 
                     <div className="small-container">
                       <p>
+                    <span className="material-icons">info</span>
                         We use the mid-market rate for our converter. The rate
                         is given for information <br></br>purposes only. You
-                        will not benefit from this rate when sending money.
-                        <a>
-                          Check shipping <br></br>rates.
-                        </a>
+                        will not benefit from this rate when sending money.Check shipping rates
                       </p>
                       <button>Convert</button>
                     </div>
