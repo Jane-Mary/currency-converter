@@ -54,7 +54,7 @@ export function App() {
   // Step 3: Handle multiplication
   const handleMultiply = (): void => {
     if (typeof inputValue === 'number') {
-      setConvert(inputValue * 1.06); // Multiply by 2 or any fixed value
+      setConvert(inputValue * 1.06); 
     }
   };
 
