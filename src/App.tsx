@@ -4,7 +4,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
-
 // Functions for the tabs
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -22,7 +21,7 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3}}>{children}</Box>}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -34,7 +33,6 @@ function a11yProps(index: number) {
   };
 }
 
-
 export function App() {
   //State used for tabs
   const [value, setValue] = React.useState(0);
@@ -44,10 +42,34 @@ export function App() {
   };
 
   //State used for binding
-  const [inputValue, setInputValue] = React.useState('');
-  const handleChanges = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-    setInputValue(event.target.value); 
+  const [inputValue, setInputValue] = React.useState<number | ''>('');
+  const [convert, setConvert] = React.useState<number | null>(null);
+
+  // Step 2: Handle input change
+  const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setInputValue(value === '' ? '' : Number(value));
   };
+
+  // Step 3: Handle multiplication
+  const handleMultiply = (): void => {
+    if (typeof inputValue === 'number') {
+      setConvert(inputValue * 1.06); // Multiply by 2 or any fixed value
+    }
+  };
+
+  //State used for result binding
+
+  const [result, setResult] = React.useState("USD");
+  const handleResultChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setResult(event.target.value);
+  };
+
+  const [answer, setAnswer] = React.useState("EUR");
+  const handleAnswerChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setAnswer(event.target.value);
+  };
+
 
   return (
     <>
@@ -57,84 +79,131 @@ export function App() {
           <p>Welcome to the world's most popular money tool.</p>
         </div>
       </section>
-
       <div className="container">
         <div className="navbar">
-          <nav>
-            <ul>
-              <Box sx={{width: "65rem", backgroundColor: "white",padding: "1rem", marginTop: "-4rem", marginLeft: "-28rem", borderRadius: "10px",border:"solid 2px black"}}>
-                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                  <Tabs value={value}  onChange={handleChange}  aria-label="basic tabs example"  >
-                    <Tab label="Convert" {...a11yProps(0)}  sx={{ marginRight: "10rem", marginLeft: "2rem" }}/>
-                    <Tab label="Send"  {...a11yProps(1)} sx={{ marginRight: "12rem" }} />
-                    <Tab label="Graphics"   {...a11yProps(2)}   sx={{ marginRight: "10rem" }} />
-                    <Tab label="Alert" {...a11yProps(3)} />
-                  </Tabs>
-                </Box>
-                <CustomTabPanel value={value} index={0}>
-                  <div className="content">
-                    <div className="box">
-                      <div className="form">
-                        <label htmlFor="amount">Amount</label>
-                        <input type="text" name="amount" placeholder="0" value={inputValue} onChange={handleChanges} />
-                      </div>
-                      <div className="form">
-                        <label htmlFor="amount" style={{ marginLeft: "-10rem" }} >
-                          Of
-                        </label>
-                        <select name="of" id="of">
-                          <option value="USA">USA - United States of America</option>
-                          <option value="EUR">EUR - Europe</option>
-                          <option value="CMR">CMR - Cameroon</option>
-                          <option value="NIG">NIG - Nigeria</option>
-                        </select>
-                      </div>
-                      <div className="switch">
-                      <span className="material-icons">swap_horiz</span>
-                      </div>
-                      <div className="form">
-                        <label htmlFor="amount" style={{ marginLeft: "-7rem" }}>Towards </label>
-                        <select name="towards" id="towards">
-                          <option value="EUR">EUR - Europe</option>
-                          <option value="CMR">CMR - Cameroon</option>
-                          <option value="USA">
-                            USA - United States of America
-                          </option>
-                          <option value="NIG">NIG - Nigeria</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* Exchange rates display */}
-                    <div className="display">
-                    <p style={{color:"black"}}>{inputValue}United States Dollar =  <br></br> <span style={{fontSize:"xx-large",color:"#472E72"}}>0.93847853Euro</span> </p>
-                    <p style={{color:"black"}}>1EUR = 1,06527 USD</p>
-
-                    </div>
-
-                    <div className="small-container">
-                      <p>
-                    <span className="material-icons">info</span>
-                        We use the mid-market rate for our converter. The rate
-                        is given for information <br></br>purposes only. You
-                        will not benefit from this rate when sending money.Check shipping rates
-                      </p>
-                      <button>Convert</button>
-                    </div>
+          <Box
+            sx={{
+              width: "63rem",
+              backgroundColor: "white",
+              padding: "1rem",
+              marginTop: "-4rem",
+              marginLeft: "-25rem",
+              borderRadius: "10px",
+              border: "solid 2px black",
+            }}
+          >
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                aria-label="basic tabs example"
+              >
+                <Tab
+                  label="Convert"
+                  {...a11yProps(0)}
+                  sx={{ marginRight: "10rem", marginLeft: "2rem" }}
+                />
+                <Tab
+                  label="Send"
+                  {...a11yProps(1)}
+                  sx={{ marginRight: "12rem" }}
+                />
+                <Tab
+                  label="Graphics"
+                  {...a11yProps(2)}
+                  sx={{ marginRight: "10rem" }}
+                />
+                <Tab label="Alert" {...a11yProps(3)} />
+              </Tabs>
+            </Box>
+            <CustomTabPanel value={value} index={0}>
+              <div className="content">
+                <div className="box">
+                  <div className="form">
+                    <label htmlFor="amount">Amount</label>
+                    <input
+                      type="number"
+                      name="amount"
+                      placeholder="0"
+                      value={inputValue === '' ? '' : inputValue}
+                      onChange={handleClick}
+                    />
                   </div>
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={1}>
-                  This the content of the send page
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={2}>
-                  This the content of the Graphics page
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={3}>
-                  This the content of the alert page
-                </CustomTabPanel>
-              </Box>
-            </ul>
-          </nav>
+                  <div className="form">
+                    <label htmlFor="amount" style={{ marginLeft: "-10rem" }}>
+                      Of
+                    </label>
+                    <select
+                      name="of"
+                      id="of"
+                      value={result}
+                      onChange={handleResultChange}
+                    >
+                      <option value="USD">
+                        USA - United States of America
+                      </option>
+                      <option value="EURO">EUR - Europe</option>
+                      <option value="XAF">CMR - Cameroon</option>
+                      <option value="NAIRA">NIG - Nigeria</option>
+                    </select>
+                  </div>
+                  <div className="switch">
+                    <span className="material-icons">swap_horiz</span>
+                  </div>
+                  <div className="form">
+                    <label htmlFor="amount" style={{ marginLeft: "-7rem" }}>
+                      Towards{" "}
+                    </label>
+                    <select
+                      name="towards"
+                      id="towards"
+                      value={answer}
+                      onChange={handleAnswerChange}
+                    >
+                      <option value="EURO">EUR - Europe</option>
+                      <option value="XAF">CMR - Cameroon</option>
+                      <option value="USD">
+                        USA - United States of America
+                      </option>
+                      <option value="NAIRA">NIG - Nigeria</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Exchange rates display */}
+                <div className="display">
+                  <p style={{ color: "black" }}>
+                    {inputValue} {result} = 
+                    <span style={{ fontSize: "xx-large", color: "#472E72" }}>
+                      {answer}
+                    </span>
+                  </p>
+                  <p style={{ color: "black" }}>1EUR = 1,06527 USD</p>
+                  <p>Result is {convert} {answer}</p>
+                </div>
+
+                <div className="small-container">
+                  <p>
+                    <span className="material-icons">info</span>
+                    We use the mid-market rate for our converter. The rate is
+                    given for information <br></br>purposes only. You will not
+                    benefit from this rate when sending money.Check shipping
+                    rates
+                  </p>
+                  <button onClick={handleMultiply}>Convert</button>
+                </div>
+              </div>
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+              This the content of the send page
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
+              This the content of the Graphics page
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={3}>
+              This the content of the alert page
+            </CustomTabPanel>
+          </Box>
         </div>
       </div>
       <section className="section2">
