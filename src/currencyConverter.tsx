@@ -4,13 +4,13 @@ import "./App.css";
 
 const CurrencyConverter: React.FC<{ value: number }> = ({ value }) => {
   //State used for binding
-  const [inputValue, setInputValue] = React.useState<number | "">("");
+  const [inputValue, setInputValue] = React.useState("");
   const [convert, setConvert] = React.useState<number | null>(null);
 
   // Handle input change
   const handleClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setInputValue(value === "" ? "" : Number(value));
+    setInputValue(value === "" ? "" :String(value));
   };
 
   // Handle multiplication
